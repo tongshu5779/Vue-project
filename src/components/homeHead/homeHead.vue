@@ -3,10 +3,7 @@
       <div class="homeHeaderWrap">
         <div class="package">
           <span class="logo"></span>
-          <div class="searchGoods">
-            <i class="iconfont icon-sousuo icon"></i>
-            <input type="text" placeholder="搜索商品，共有111款好物">
-          </div>
+          <heade-search></heade-search>
           <div class="login">登录</div>
         </div>
       </div>
@@ -27,8 +24,12 @@
 </template>
 
 <script>
+    import headeSearch from "../../components/headSearch/headSearch"
     export default {
-        name: "home-homeHead"
+        name: "home-homeHead",
+        components:{
+          headeSearch
+        }
     }
 </script>
 
@@ -58,21 +59,6 @@
                 background-size 100% 100%
                 width 1.38rem
                 height 0.39rem
-            .searchGoods
-               width 4.4rem
-               height .56rem
-               border-radius 5px
-               background-color  #eee
-               text-align center
-               line-height .56rem
-               .icon
-                   font-size 18px
-                   position relative
-                   top 2px
-               input
-                    background-color  #eee
-                    width 3.25rem
-                    font-size 14px
             .login
                  text-align center
                  line-height .37rem
