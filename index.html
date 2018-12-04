@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="./static/css/reset.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_947984_je0lbucp2jg.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_947984_gbxb27h5ax6.css">
     <title>wangyi</title>
   </head>
   <body>
@@ -20,6 +20,13 @@
       if(!window.Promise) {
         document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
       }
+    </script>
+    <script>
+      (function (designWidth) {
+        var size = (window.innerWidth || document.documentElement.clientWidth) / designWidth * 100;
+        document.documentElement.style.fontSize = size + "px";
+        document.body.style.fontSize = "14px";
+      })(750);
     </script>
   </body>
 </html>

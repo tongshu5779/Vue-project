@@ -12,19 +12,19 @@
       </span>
       <span>分类</span>
     </a>
-    <a href="javascript:;" class="item" @click="goto('/findGoods')" :class="{on:$route.path==='/'}">
+    <a href="javascript:;" class="item" @click="goto('/findGoods')" :class="{on:$route.path==='/findGoods'}">
       <span>
         <i class="iconfont icon-wpml"></i>
       </span>
       <span>识物</span>
     </a>
-    <a href="javascript:;" class="item" @click="goto('/shopCart')">
+    <a href="javascript:;" class="item" @click="goto('/shopCart')" :class="{on:$route.path==='/shopCart'}">
       <span>
         <i class="iconfont icon-gouwuche1"></i>
       </span>
       <span>购物车</span>
     </a>
-    <a href="javascript:;" class="item" @click="goto('/personal')">
+    <a href="javascript:;" class="item" @click="goto('/personal')" :class="{on:$route.path==='/personal'}">
       <span>
         <i class="iconfont icon-geren"></i>
       </span>
@@ -55,7 +55,7 @@
     bottom 0
     background-color #fff
     width 100%
-    height 50px
+    height 0.98rem
     display flex
     .item
       display flex
