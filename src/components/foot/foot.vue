@@ -39,15 +39,13 @@
         methods:{
          goto(addr){
            this.$router.replace(addr)
-         }
+         },
       }
     }
 </script>
 
 <style scoped lang="stylus">
-  @import "../../comment/stylus/mixins.styl"
   .foot-wrap
-    top-border-1px(#e4e4e4)
     position fixed
     z-index 100
     left 0
