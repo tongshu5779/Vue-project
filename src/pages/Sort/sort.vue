@@ -32,10 +32,42 @@
               <div class="pic">
                   <div class="bg"></div>
               </div>
-              <ul>
+              <ul class="list">
                 <li class="good-list">
-                  <img src="" alt="">
-                  <h1 class="title"></h1>
+                  <a href="javasrcipt:;">
+                    <img src="http://yanxuan.nosdn.127.net/39c1c32ca2301ced934e35db33150637.png?imageView&quality=85&thumbnail=144x144" alt="">
+                    <h1 class="title">三石福利价</h1>
+                  </a>
+                </li>
+                <li class="good-list">
+                  <a href="javasrcipt:;">
+                    <img src="http://yanxuan.nosdn.127.net/39c1c32ca2301ced934e35db33150637.png?imageView&quality=85&thumbnail=144x144" alt="">
+                    <h1 class="title">三石福利价</h1>
+                  </a>
+                </li>
+                <li class="good-list">
+                  <a href="javasrcipt:;">
+                    <img src="http://yanxuan.nosdn.127.net/39c1c32ca2301ced934e35db33150637.png?imageView&quality=85&thumbnail=144x144" alt="">
+                    <h1 class="title">三石福利价</h1>
+                  </a>
+                </li>
+                <li class="good-list">
+                  <a href="javasrcipt:;">
+                    <img src="http://yanxuan.nosdn.127.net/39c1c32ca2301ced934e35db33150637.png?imageView&quality=85&thumbnail=144x144" alt="">
+                    <h1 class="title">三石福利价</h1>
+                  </a>
+                </li>
+                <li class="good-list">
+                  <a href="javasrcipt:;">
+                    <img src="http://yanxuan.nosdn.127.net/39c1c32ca2301ced934e35db33150637.png?imageView&quality=85&thumbnail=144x144" alt="">
+                    <h1 class="title">三石福利价</h1>
+                  </a>
+                </li>
+                <li class="good-list">
+                  <a href="javasrcipt:;">
+                    <img src="http://yanxuan.nosdn.127.net/39c1c32ca2301ced934e35db33150637.png?imageView&quality=85&thumbnail=144x144" alt="">
+                    <h1 class="title">三石福利价</h1>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -117,4 +149,15 @@
                        height 1.92rem
                        background-image  url("http://yanxuan.nosdn.127.net/52855d9a0c1f738f26ac125913af0012.jpg?imageView&thumbnail=0x196&quality=75")
                        background-size 100% 100%
+                 .list
+                       width 5.28rem
+                       display flex
+                       flex-wrap wrap;
+                       .good-list
+                              width 1.44rem
+                              height 2.16rem
+                              margin-right .34rem
+                              img
+                                 width 1.44rem
+                                 height 1.44rem
 </style>

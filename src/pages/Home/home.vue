@@ -371,14 +371,14 @@
           color: #B4282D
   .upIcon
     background url("//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-7a19216f77.png")
-    background-size: 1.09333rem 1.09333rem
+    background-size  100% 100%
     display inline-block
     z-index 10
     width  .82rem
     height .82rem
     position fixed
-    left 64.5rem
-    top 11.3rem
+    left 6.45rem
+    top 11.32rem
 
   .content
       background-color  #F4F4F4
@@ -754,7 +754,7 @@
                            width 1.2rem
                            height 1.2rem
 
-                 
+
      .footWrap
          height 2.44rem
          background-color: #414141;
