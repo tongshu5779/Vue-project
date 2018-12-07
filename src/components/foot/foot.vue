@@ -12,7 +12,7 @@
       </span>
       <span>分类</span>
     </a>
-    <a href="javascript:;" class="item" @click="goto('/findGoods')" :class="{on:$route.path==='/findGoods'}">
+    <a href="javascript:;" class="item" @click="goto('/findGoods')" :class="{on:findGood('/findGoods')}">
       <span>
         <i class="iconfont icon-wpml"></i>
       </span>
@@ -39,15 +39,16 @@
         methods:{
          goto(addr){
            this.$router.replace(addr)
+         },
+         findGood(path){
+           return !this.$route.path.indexOf(path)
          }
       }
     }
 </script>
 
 <style scoped lang="stylus">
-  @import "../../comment/stylus/mixins.styl"
   .foot-wrap
-    top-border-1px(#e4e4e4)
     position fixed
     z-index 100
     left 0

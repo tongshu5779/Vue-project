@@ -7,33 +7,56 @@
           <div class="login">登录</div>
         </div>
       </div>
-      <div class="homeHeaderNav">
-        <div class="navItem active"><span>推荐</span></div>
-        <div class="navItem"><span >居家</span></div>
-        <div class="navItem"><span >鞋包配饰</span></div>
-        <div class="navItem"><span>服饰</span></div>
-        <div class="navItem"><span>电器</span></div>
-        <div class="navItem"><span >洗护</span></div>
-        <div class="navItem"><span >饮食</span></div>
-        <div class="navItem"><span >餐厨</span></div>
-        <div class="navItem"><span >婴童</span></div>
-        <div class="navItem"><span >文体</span></div>
-        <div class="navItem"><span >特色区</span></div>
+      <div class="nav">
+        <div class="homeHeaderNav" ref="tabUl">
+          <div class="navItem" v-for="(cate,index) in cateList" :key="index">
+            <span :class="{active:index===0}">{{cate.name}}</span>
+          </div>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
     import headeSearch from "../../components/headSearch/headSearch"
+    import {mapState} from "vuex"
+    import BScroll from "better-scroll"
     export default {
         name: "home-homeHead",
         components:{
-          headeSearch
+          headeSearch,
+        },
+        computed:{
+          ...mapState(["cateList"])
+        },
+        mounted(){
+          const result = this.$store.dispatch("cateList")
+          this.$nextTick(() => {
+            this.tabScroll = new BScroll(".nav", {click: true, scrollX: true})
+            this.cateList && this.setUlWidth()
+          })
+        },
+        methods:{
+          setUlWidth(){
+            const ul = this.$refs.tabUl
+            const liWidth = 1.6
+            const size = this.cateList.length
+            ul.style.width = liWidth * size+ 'rem'
+          }
+        },
+       watch: {
+         cateList() {
+           this.$nextTick(() => {
+              this.setUlWidth()
+              this.tabScroll.refresh()
+          })
         }
+      },
     }
 </script>
 
 <style scoped lang="stylus">
+   @import "../../comment/stylus/mixins.styl"
    .homeHeader
       z-index 10
       position fixed
@@ -69,21 +92,31 @@
                  font-size 12px
                  color #b4282d
                  border 1px #b4282d solid
-      .homeHeaderNav
+      .nav
+        width 100%
+        .homeHeaderNav
            display flex
            height .6rem
-           width 12.51rem
-           overflow hidden
            .navItem
                display flex
                justify-content center
                align-items center
                font-size 14px
-               margin-left .2rem
+               margin-left .1rem
+               width 1.6rem
+               position relative
                span
                   padding 0 .15rem
-               &.active
+                  &.active
                     color #b4282d
-                    border-bottom 2px #b4282d solid
+                    &::before
+                      content ''
+                      position absolute
+                      z-index 200
+                      left 50%-.6rem
+                      bottom 0
+                      width .6rem
+                      height .04rem
+                      background-color #b4282d
 
 </style>

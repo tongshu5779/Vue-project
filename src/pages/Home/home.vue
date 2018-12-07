@@ -4,17 +4,8 @@
      <nav class="home_nav">
        <div class="swiper-container">
          <div class="swiper-wrapper">
-           <div class="swiper-slide">
-             <img src="https://yanxuan.nosdn.127.net/850c005113e5becbfd98d797b8a2101a.jpg?imageView&quality=75&thumbnail=750x0" alt="">
-           </div>
-           <div class="swiper-slide">
-             <img src="https://yanxuan.nosdn.127.net/941552e8196cf9e6151611713e4026e6.jpg?watermark&type=1&gravity=northwest&dx=0&dy=0&image=YTRhMmIzYmI1Y2I1YTc4ZGM5MmE3Nzk2NzAwYTFiNjgucG5n|imageView&quality=75&thumbnail=750x0" alt="">
-           </div>
-           <div class="swiper-slide">
-             <img src="https://yanxuan.nosdn.127.net/941552e8196cf9e6151611713e4026e6.jpg?watermark&type=1&gravity=northwest&dx=0&dy=0&image=YTRhMmIzYmI1Y2I1YTc4ZGM5MmE3Nzk2NzAwYTFiNjgucG5n|imageView&quality=75&thumbnail=750x0" alt="">
-           </div>
-           <div class="swiper-slide">
-             <img src="https://yanxuan.nosdn.127.net/e0c3e253dcfdb170bda823ac5b71247e.jpg?imageView&quality=75&thumbnail=750x0" alt="">
+           <div class="swiper-slide" v-for="(focus,index) in focusList" :key="index">
+             <img :src="focus.picUrl" alt="">
            </div>
          </div>
          <div class="swiper-pagination"></div>
@@ -22,17 +13,9 @@
      </nav>
      <div class="present">
        <ul class="introduce">
-         <li class="item">
-           <i class="iconfont icon-dui"></i>
-           <span>网易自营品牌</span>
-         </li>
-         <li class="item">
-           <i class="iconfont icon-dui"></i>
-           <span>30天无忧退款</span>
-         </li>
-         <li class="item">
-           <i class="iconfont icon-dui"></i>
-           <span>48小时快速退款</span>
+         <li class="item"  v-for="(policy,index) in policyDescList" :key="index">
+           <i class="icon" :style="{background: `url('${policy.icon}')`,backgroundSize: '100% 100%'}"></i>
+           <span>{{policy.desc}}</span>
          </li>
        </ul>
      </div>
@@ -40,65 +23,11 @@
        <div class="products">
           <div class="productWrap">
             <div class="package">
-              <div class="product">
+              <div class="product" v-for="(kingkong,index) in kingKongList" :key="index">
                 <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/98b6a6fc32f1fea861934816729e2cf5.png" alt="">
+                  <img :src="kingkong.picUrl" alt="">
                 </div>
-                <div class="productName">居家</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/46d33b9a9fbb659fcbac37ec58d51e62.png" alt="">
-                </div>
-                <div class="productName">鞋包服饰</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/31831ada59dc10319cba195620ed9ed0.png" alt="">
-                </div>
-                <div class="productName">服饰</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/45833c71d4b0d0de0755a20f893fa25f.png" alt="">
-                </div>
-                <div class="productName">电器</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/2fde77529e90a26427d1c02faa3bfbf6.png" alt="">
-                </div>
-                <div class="productName">婴童</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/15e364ca93313bbd6e87dfcba7ae7b74.png" alt="">
-                </div>
-                <div class="productName">饮食</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/793bca13bb931475ea7f0c00299362bb.png" alt="">
-                </div>
-                <div class="productName">洗护</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/fc3e359da08577228354da61ea912c99.png" alt="">
-                </div>
-                <div class="productName">餐厨</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src="http://yanxuan.nosdn.127.net/97eb6fd2c7ea76a3a42b9dafa3bd6543.png" alt="">
-                </div>
-                <div class="productName">文体</div>
-              </div>
-              <div class="product">
-                <div class="img">
-                  <img src=http://yanxuan.nosdn.127.net/db5e2ce8c66f7db3f4282ecb24a64236.png alt="">
-                </div>
-                <div class="productName">超级会员</div>
+                <div class="productName">{{kingkong.text}}</div>
               </div>
             </div>
           </div>
@@ -143,7 +72,7 @@
            <div class="newTitle">
              <span>新人专享礼</span>
            </div>
-           <div class="newContent">
+           <div class="newContent" v-if="indexActivityModule.length">
              <div class="left">
                <div class="title">
                  新人专享红包
@@ -159,30 +88,30 @@
                 <div class="up">
                   <div class="upContent">
                     <div class="imgPackage">
-                      <img src="http://yanxuan.nosdn.127.net/13ae17d083a2328d4a0016ebe232a57b.png" alt="">
+                      <img :src="indexActivityModule[0].picUrl" alt="">
                       <div class="icon">
-                        <div class="line1">¥42</div>
-                        <div class="line2">¥59</div>
+                        <div class="line1">{{indexActivityModule[0].activityPrice}}</div>
+                        <div class="line2">{{indexActivityModule[0].originPrice}}</div>
                       </div>
                     </div>
                     <div class="title">
-                      <p class="p1">福利社</p>
-                      <p class="p2">今日特价</p>
+                      <p class="p1">{{indexActivityModule[0].title}}</p>
+                      <p class="p2">{{indexActivityModule[0].subTitle}}</p>
                     </div>
                   </div>
                 </div>
                 <div class="down">
                   <div class="downContent">
                     <div class="imgPackage">
-                      <img src="http://yanxuan.nosdn.127.net/2501687aee9b1c2db9db024b3e062aa7.png" alt="">
+                      <img :src="indexActivityModule[1].picUrl" alt="">
                       <div class="icon">
-                        <div class="line1">¥1</div>
-                        <div class="line2">¥9</div>
+                        <div class="line1">{{indexActivityModule[1].activityPrice}}</div>
+                        <div class="line2">{{indexActivityModule[1].originPrice}}</div>
                       </div>
                     </div>
                     <div class="title">
-                      <p class="p1">新人拼团</p>
-                      <p class="p2">1元起包邮</p>
+                      <p class="p1">{{indexActivityModule[1].title}}</p>
+                      <p class="p2">{{indexActivityModule[1].subTitle}}</p>
                     </div>
                   </div>
                 </div>
@@ -236,6 +165,43 @@
              </li>
           </ul>
        </div>
+       <div class="hotSell">
+            <div class="hotTitle">
+              <div class="left">
+                <span class="list">类目热销榜</span>
+              </div>
+            </div>
+            <div class="hotContent">
+              <div class="line1"  v-if="computArr[0]">
+                <div class="left">
+                  <div class="name">
+                     <span class="text">{{computArr[0].categoryName}}</span>
+                  </div>
+                  <div class="img">
+                    <img :src="computArr[0].picUrl" alt="">
+                  </div>
+                </div>
+                <div class="right">
+                  <div class="name">
+                    <span class="text">{{computArr[1].categoryName}}</span>
+                  </div>
+                  <div class="img">
+                    <img :src="computArr[1].picUrl" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="line2">
+                <a href="javascript:;" class="item"  v-for="(item,index) in computArr1" :key="index">
+                  <div class="name">{{item.categoryName}}</div>
+                  <div class="imgWrap">
+                    <div class="img">
+                      <img :src="item.picUrl" alt="">
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+       </div>
        <div class="footWrap">
           <div class="wrap">
             <div class="version">
@@ -258,20 +224,54 @@
     import homeHeader from "../../components/homeHead/homeHead"
     import "swiper/dist/css/swiper.min.css"
     import Swiper from "swiper/dist/js/swiper.min.js"
+    import {mapState} from "vuex"
     export default {
         name: "home",
         components:{
           homeHeader
       },
-        mounted(){
-          new Swiper('.swiper-container', {
-            loop: true,
-            pagination: {
-              el: '.swiper-pagination'
-            },
-            autoplay:true,
+      computed:{
+        ...mapState(["policyDescList","focusList",
+                      "kingKongList","indexActivityModule",
+                       "categoryList"]),
+        computArr(){
+           let  arr = [];
+           const {categoryList}=this
+           categoryList.map((val,index)=>{
+                if(index<2){
+                  arr.push(val)
+                }
+           })
+          return arr
+        },
+        computArr1(){
+          let  arr = [];
+          const {categoryList}=this
+          categoryList.forEach((val,index)=>{
+            if(index>=2){
+              arr.push(val)
+            }
           })
+          return arr
         }
+      },
+      mounted(){
+          this.$store.dispatch("policyDescList")
+          this.$store.dispatch("focusList",()=>{
+              this.$nextTick(() => {
+                new Swiper('.swiper-container', {
+                  loop: true,
+                  pagination: {
+                    el: '.swiper-pagination'
+                  },
+                  autoplay: true,
+                });
+              })
+          })
+          this.$store.dispatch("kingKongList")
+          this.$store.dispatch("indexActivityModule")
+          this.$store.dispatch("categoryList")
+      }
     }
 </script>
 
@@ -280,8 +280,9 @@
 .home
   margin-bottom 0.98rem
   .home_nav
-    height 200px
+    height 3.7rem
     background #fff
+    padding-top 1.47rem
     .swiper-container
       width 100%
       height 100%
@@ -306,23 +307,25 @@
       .item
         width 2.27rem
         height 0.36rem
-        .iconfont
-          font-size .32rem
-          color: #B4282D
+        .icon
+          display inline-block
+          width .32rem
+          height .32rem
+          vertical-align middle
         span
           margin-left 0.08rem
           font-size .16rem
           color: #B4282D
   .upIcon
     background url("//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-7a19216f77.png")
-    background-size: 1.09333rem 1.09333rem
+    background-size  100% 100%
     display inline-block
     z-index 10
     width  .82rem
     height .82rem
     position fixed
-    left 64.5rem
-    top 11.3rem
+    left 6.45rem
+    top 11.32rem
 
   .content
       background-color  #F4F4F4
@@ -347,6 +350,9 @@
                        width 1.1rem
                        height 1.1rem
                   .productName
+                      font-size .24rem
+                      margin-top .1rem
+                      color #333333
                       width 1.1rem
                       height .36rem
                       text-align center
@@ -591,6 +597,7 @@
      .manufacturersSupplying
          width 100%
          height 6.81rem
+         padding-bottom 0.08rem
          background-color white
          .manufacturerName
              width 6.9rem
@@ -615,6 +622,7 @@
              height 5.27rem
              padding 0 0.26rem 0.26rem 0.3rem
              margin-bottom 0.2rem
+             background-color white
              .item
                 float left
                 width 3.42rem
@@ -650,6 +658,84 @@
                           font-size .16rem
                       .iconfont
                            color red
+     .hotSell
+         height 7.1rem
+         margin-bottom .2rem
+         background-color white
+         .hotTitle
+             width 6.9rem
+             height 1rem
+             padding 0 .3rem
+             .left
+                  width 1.6rem
+                  height 1rem
+                  line-height 1rem
+                  text-align center
+                  font-size .32rem
+         .hotContent
+             width 7rem
+             height 5.89rem
+             padding 0 .2rem 0.2rem .3rem
+           .line1
+             .left,.right
+               float left
+               width 3.4rem
+               height 2rem
+               margin 0 .1rem .1rem 0
+               background  #F9F3E4
+               overflow hidden
+               position relative
+               .name
+                 width 3.1rem
+                 height .41rem
+                 padding-left .3rem
+                 margin-top .66rem
+                 .text
+                   width 0.84rem
+                   height .41rem
+               .img
+                 width 2rem
+                 height 2rem
+                 position absolute
+                 left 1.38rem
+                 top 0
+                 img
+                   display inline-block
+                   width 2rem
+                   height 2rem
+
+             .right
+               background-color #EBEFF6
+               .img
+                 position absolute
+                 left 1.34rem
+
+           .line2
+                 .item
+                    display inline-block
+                    width 1.65rem
+                    height 1.8rem
+                    margin-right .02rem
+                    margin-bottom .1rem
+                    background-color #F5F5F5
+                    .name
+                       width 1.65rem
+                       height .36rem
+                       margin-top .1rem
+                       text-align center
+                    .imgWrap
+                       width 1.2rem
+                       height 1.2rem
+                       margin-left .23rem
+                       margin-top .02rem
+                       .img
+                         width 1.2rem
+                         height 1.2rem
+                         img
+                           width 1.2rem
+                           height 1.2rem
+
+
      .footWrap
          height 2.44rem
          background-color: #414141;
