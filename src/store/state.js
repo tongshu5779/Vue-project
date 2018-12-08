@@ -7,5 +7,11 @@ export default{
   indexActivityModule:[],
   categoryList:[],
   category:[],
-  recommend:[]
+  // recommend:[],
+  findTab:[],
+  findData:[],
+  findData2:{},
+  User:{},
+  searchTab:{},
+  searchKey:{}
 }

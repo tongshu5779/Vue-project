@@ -9,6 +9,9 @@
   import foot from "@/components/foot/foot"
   export default {
   name: 'App',
+  mounted(){
+    this.$store.dispatch("getUser")
+  },
   components:{
     foot
   }

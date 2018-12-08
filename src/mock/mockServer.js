@@ -33,7 +33,7 @@ Mock.mock('/category', {
     code: 0,
     data: category
 }),
-Mock.mock('/recommend', {
+Mock.mock('/tab', {
     code: 0,
     data: shiwu
 })

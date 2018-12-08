@@ -1,13 +1,13 @@
 <template>
-    <div class="recommend" v-if="recommend[0]">
-      <div class="pic">
-        <div class="imgPackage">
-          <img :src="recommend[0].ad.picUrl" alt="">
+    <div class="recommend" v-if="selectIndex()">
+      <div v-for="(dataItem,index) in selectIndex()" :key="index">
+        <div class="pic" v-if="dataItem.ad">
+          <div class="imgPackage">
+            <img :src="dataItem.ad.picUrl" alt="">
+          </div>
         </div>
-      </div>
-      <div>
-        <div class="item" v-for="(item,index) in recommend[0].topics" :key="index">
-          <div class="type1" v-if="item.type===1">
+        <div class="item" v-for="(item,index) in selectAttr(dataItem)" :key="index">
+          <div class="type1" v-if="item.type===1||item.type===2">
             <div class="type1content">
               <div class="text">
                 <div class="name">
@@ -54,12 +54,31 @@
 <script>
     import {mapState} from "vuex"
     export default {
-        name: "recommend",
+        name: "tab",
         computed:{
-          ...mapState(["recommend"])
+          ...mapState(["findData","findData2"])
         },
         mounted(){
-          this.$store.dispatch("recommend")
+          this.$store.dispatch("findData")
+          this.$store.dispatch("findData2")
+        },
+        methods:{
+           selectIndex(){
+             if(this.$route.path==='/findGoods/tab/0'){
+               return  this.findData
+             }else if(this.$route.path==='/findGoods/tab/1'){
+               return  this.findData2
+             }
+           },
+           selectAttr(dataItem){
+             const data = this.selectIndex()
+             if(data===this.findData){
+                      return dataItem.topics
+             }else if(data===this.findData2){
+                    return dataItem
+             }
+
+           }
         }
     }
 </script>

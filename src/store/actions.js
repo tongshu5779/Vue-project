@@ -6,7 +6,14 @@ import {
   reqIndexActivityModule,
   reqCategoryList,
   reqCategory,
-  reqRecommend
+  // reqRecommend,
+  reqTab,
+  reqFindData,
+  reqFindData2,
+  reqUser,
+  reqLogout,
+  reqSearchTab,
+  reqSearchKey
 }  from "@/api"
 import {
   RECEIVE_POLICYDESCLIST,
@@ -16,7 +23,13 @@ import {
   RECEIVE_INDEXACTIVITYMODULE,
   RECEIVE_CATEGORYLIST,
   RECEIVE_CATEGORY,
-  RECEIVE_RECOMMEND
+  RECEIVE_FINDTAB,
+  RECEIVE_FINDDATA,
+  RECEIVE_FINDDATA2,
+  RECEIVE_USER,
+  RESET_USER,
+  RECEIVE_SEARCHTAB,
+  RECEIVE_SEARCHKEY
 } from  "./mutation-types"
 
 export default {
@@ -45,13 +58,47 @@ export default {
     const result = await reqCategoryList();
     commit(RECEIVE_CATEGORYLIST, {categoryList: result.data})
   },
-  async category({commit},fn) {
+  async category({commit}) {
     const result = await reqCategory();
     commit(RECEIVE_CATEGORY, {category: result.data})
-    fn()
   },
-  async recommend({commit}) {
-    const result = await reqRecommend();
-    commit(RECEIVE_RECOMMEND, {recommend: result.data})
+  async findTab({commit}) {
+    const result = await reqTab();
+    commit(RECEIVE_FINDTAB, {findTab: result.data})
+  },
+  async findData({commit}) {
+    const result = await reqFindData();
+    commit(RECEIVE_FINDDATA, {findData: result.data})
+  },
+  async findData2({commit}) {
+    const result = await reqFindData2();
+    commit(RECEIVE_FINDDATA2, {findData2: result.data})
+  },
+   async getUser({commit}) {
+    const result = await reqUser();
+    if(result.code===0){
+      commit(RECEIVE_USER, {User: result.data})
+    }
+  },
+   recordUser({commit},user) {
+    commit(RECEIVE_USER, {User:user})
+  },
+  async logout({commit}) {
+    const result = await reqLogout()
+    if(result.code===0) {
+      commit(RESET_USER)
+    }
+  },
+  async searchTab({commit}) {
+    const result = await reqSearchTab();
+    if(result.code==="200"){
+      commit(RECEIVE_SEARCHTAB, {searchTab: result.data})
+    }
+  },
+  async searchKey({commit},key) {
+    const result = await reqSearchKey(key);
+    if(result.code==="200"){
+      commit(RECEIVE_SEARCHKEY, {searchKey: result.data})
+    }
   },
 }

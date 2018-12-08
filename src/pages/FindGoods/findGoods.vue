@@ -17,20 +17,8 @@
       </header>
       <div class="tab">
          <ul class="tabUL">
-           <li class="item">
-             <router-link to="/findGoods/recommend">推荐</router-link>
-           </li>
-           <li class="item">
-             <router-link to="/findGoods/intelligent">达人</router-link>
-           </li>
-           <li class="item">
-             <router-link to="/findGoods/update">上新</router-link>
-           </li>
-           <li class="item">
-             <router-link to="/findGoods/sun" >晒单</router-link>
-           </li>
-           <li class="item">
-             <router-link to="/findGoods/findHome">HOME</router-link>
+           <li class="item" v-for="(tab,index) in findTab" :key="index">
+             <router-link :to="`/findGoods/tab/${index}`">{{tab.tabName}}</router-link>
            </li>
          </ul>
       </div>
@@ -41,9 +29,15 @@
 </template>
 
 <script>
+    import {mapState} from "vuex"
     export default {
         name: "find-goods",
-
+        computed:{
+          ...mapState(["findTab"])
+        },
+        mounted(){
+          this.$store.dispatch("findTab")
+        }
     }
 </script>
 

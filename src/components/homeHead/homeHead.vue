@@ -7,12 +7,26 @@
           <div class="login">登录</div>
         </div>
       </div>
-      <div class="nav">
+      <div class="nav" v-show="!down">
+        <i class="iconfont" :class="down?'icon-jiantou9':'icon-shangjiantou'" @click="change" ref="icon1"></i>
         <div class="homeHeaderNav" ref="tabUl">
           <div class="navItem" v-for="(cate,index) in cateList" :key="index">
             <span :class="{active:index===0}">{{cate.name}}</span>
           </div>
         </div>
+      </div>
+      <div class="list" v-show="down">
+          <div class="tabTitle">全部频道</div>
+          <i class="iconfont" :class="down?'icon-jiantou9':'icon-shangjiantou'" @click="change" ref="icon2"></i>
+          <div class="listwrap">
+            <div class="listItem":class="{active:index===0}" v-for="(cate,index) in cateList" :key="index">
+              <span >{{cate.name}}</span>
+            </div>
+          </div>
+
+      </div>
+      <div class="mask" v-show="down">
+
       </div>
     </div>
 </template>
@@ -23,6 +37,11 @@
     import BScroll from "better-scroll"
     export default {
         name: "home-homeHead",
+        data(){
+          return{
+            down:false
+          }
+        },
         components:{
           headeSearch,
         },
@@ -42,6 +61,9 @@
             const liWidth = 1.6
             const size = this.cateList.length
             ul.style.width = liWidth * size+ 'rem'
+          },
+          change(){
+            this.down=!this.down
           }
         },
        watch: {
@@ -93,7 +115,14 @@
                  color #b4282d
                  border 1px #b4282d solid
       .nav
-        width 100%
+        width 6.5rem
+        overflow hidden
+        .iconfont
+              font-size .38rem
+              position absolute
+              right .4rem
+              top .88rem
+
         .homeHeaderNav
            display flex
            height .6rem
@@ -119,4 +148,50 @@
                       height .04rem
                       background-color #b4282d
 
+
+
+      .list
+         background-color #fff
+         width 7.5rem
+         height 3.72rem
+         margin-top -.1rem
+         z-index 10
+         .tabTitle
+            height .6rem
+            line-height .6rem
+            width 7.2rem
+            padding-left .3rem
+         .iconfont
+             font-size .38rem
+             position absolute
+             right .4rem
+             top .88rem
+         .listwrap
+             width 7.5rem
+             height 2.88rem
+             padding-top .24rem
+             .listItem
+                box-sizing border-box
+                margin-left .3rem
+                margin-bottom .4rem
+                width 1.48rem
+                height .54rem
+                float left
+                background-color #FAFAFA
+                text-align center
+                line-height .54rem
+                border .03rem #F1F1F1 solid
+                &.active
+                   border .02rem rgb(180, 40, 45) solid
+                   color rgb(180, 40, 45)
+      .mask
+         width 7.5rem
+         height  6.67rem
+         background-color rgba(0,0,0,.5)
+         display fixed
+         left 0
+         right 0
+         top 0
+         bottom 0
+         z-index 10
 </style>

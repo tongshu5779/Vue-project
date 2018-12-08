@@ -18,7 +18,7 @@
            <div class="goods-wrapper">
                <div class="list" v-if="category[currentIndex]">
                    <div class="pic"
-                        :style="{background: `url('${category[currentIndex].wapBannerUrl}')`}"></div>
+                        :style="{backgroundImage: `url('${category[currentIndex].wapBannerUrl}')`}"></div>
                    <div class="good-list" v-if="category[currentIndex].type===1">
                      <a href="javasrcipt:;" v-for="(pic,index) in category[currentIndex].subCateList" :key="index">
                        <img :src="pic.bannerUrl" alt="">
@@ -76,6 +76,7 @@
 </script>
 
 <style scoped lang="stylus">
+  @import "../../comment/stylus/mixins.styl"
    .sortWrap
          .sortPackage
              width 100%
@@ -102,7 +103,7 @@
              .menu-wrapper
                  width 1.62rem
                  height 12.46rem
-                 position absolute
+                 position fixed
                  top 0.88rem
                  left 0
                  border-right 0.01rem #EDEDED solid
@@ -146,42 +147,54 @@
                             background-size 100% 100%
                        .good-list
                               a
+                                  vertical-align: top
                                   display inline-block
                                   width 1.44rem
                                   margin-right .34rem
+                                  text-align center
                                   img
                                      width 1.44rem
                                      height 1.44rem
                                   &:nth-child(3n)
                                       margin-right 0
                                   .title
+                                      color black
                                       display inline-block
                                       font-size .24rem
-                                      text-align center
                                       width 1.44rem
                                       height .72rem
                        .goodList2
                               .sub
                                   width 5.28rem
+                                  margin-bottom .12rem
                                   h4
+                                      font-weight bold
+                                      font-size .28rem
                                       height .41rem
                                       padding-bottom .08rem
                                       border-bottom .02rem #ECECEC solid
                                       margin-bottom .24rem
                                   .item
                                        width 5.28rem
+                                       clearFix()
                                        a
+                                         vertical-align: top
                                          float left
                                          display inline-block
                                          width 1.44rem
                                          height 2.16rem
                                          margin-right .34rem
+                                         text-align center
                                          &:nth-child(3n)
                                               margin-right 0
                                          img
                                             width  1.44rem
                                             height  1.44rem
                                          .title
+                                              display inline-block
+                                              color black
+                                              font-style normal
                                               width 1.44rem
                                               height .72rem
+                                              font-size .24rem
       </style>
